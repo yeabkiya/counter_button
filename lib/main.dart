@@ -10,12 +10,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       title: 'Counter Button',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-        useMaterial3: true,
+        scaffoldBackgroundColor: Colors.purple[200]
       ),
-      home: const CounterScreen(title: 'Flutter Counter Button Page'),
+      home: const CounterScreen(title: 'Counter Button Page'),
     );
   }
 }
@@ -31,6 +31,14 @@ class CounterScreen extends StatefulWidget {
 
 class _CounterScreenState extends State<CounterScreen> {
   int _counter = 0;
+
+  bool _firstImage = true;
+
+  void _imageToggle(){
+    setState(() {
+      _firstImage = !_firstImage;
+    });
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -52,9 +60,27 @@ class _CounterScreenState extends State<CounterScreen> {
             const Text(
               'You have pushed the button this many times:',
             ),
+            const SizedBox(height: 15),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            const SizedBox(height: 15),
+
+            ElevatedButton(
+              onPressed: _incrementCounter, 
+              child: const Text('Increment Counter')
+            ),
+            const SizedBox(height: 15),
+
+            _firstImage
+               ? Image.asset('images/SadCat.png')
+               : Image.asset('images/HappyCat.png'),
+            const SizedBox(height: 15,),
+            
+            ElevatedButton(
+              onPressed: _imageToggle, 
+              child: const Text('Image Toggle'),
             ),
           ],
         ),
