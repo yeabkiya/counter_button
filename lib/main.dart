@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       
       title: 'Counter Button',
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.purple[200]
+        scaffoldBackgroundColor: const Color.fromARGB(255, 130, 92, 137)
       ),
       home: const CounterScreen(title: 'Counter Button Page'),
     );
